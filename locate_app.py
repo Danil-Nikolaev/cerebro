@@ -53,8 +53,14 @@ def search(drives, folders, string, list_path):
                 search_folder(path, string, list_path)
 
 
+def normalize_path(list_path: list):
+    for i in range(len(list_path)):
+        list_path[i] = list_path[i].replace('\\', '/')
+
+
 def print_all_path(list_path: list):
-    # list_path = set(list_path)
+    normalize_path(list_path)
+    list_path = set(list_path)
     print(f"Detected {len(list_path)} locations:")
     for path in list_path:
         print(path)
